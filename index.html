@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aura Elite Events Quotation Maker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --corporate-bg: #F8F6F4; /* Soft Ivory */
+        --corporate-card-bg: #ffffff; /* White */
+        --corporate-accent: #C9A76D; /* Metallic Gold */
+        --corporate-accent-hover: #b8955d; /* Darker Gold */
+        --corporate-text-primary: #333333; /* Charcoal Grey */
+        --corporate-text-secondary: #5D534A; /* Warm Taupe */
+        --corporate-border: #e5e0da; /* Warm Gray Border */
+        --corporate-border-focus: var(--corporate-accent);
+        
+        /* New variables for the preview page */
+        --corporate-preview-bg: #FCF8F3; /* Light Champagne Ivory */
+        --preview-text-primary: #5D4037; /* Rich Brown */
+        --preview-text-secondary: #8D6E63; /* Soft Brown */
+      }
+      body {
+        font-family: 'Poppins', sans-serif;
+        color: var(--corporate-text-primary);
+        background-color: var(--corporate-bg);
+        background-attachment: fixed;
+      }
+      body::before {
+        display: none; /* Removed texture */
+      }
+      .font-display {
+        font-family: 'Playfair Display', serif;
+      }
+      .accent-text {
+        color: var(--corporate-accent);
+      }
+      .header-text {
+        color: var(--corporate-text-primary);
+      }
+      header h1::after {
+        content: '';
+        display: block;
+        width: 100px;
+        height: 1px;
+        background: var(--corporate-accent);
+        margin: 1rem auto 0;
+      }
+      .accent-bg {
+        background-color: var(--corporate-accent);
+        transition: background-color 0.2s ease-in-out;
+      }
+      .accent-bg:hover:not(:disabled) {
+        background-color: var(--corporate-accent-hover);
+      }
+      .card-shadow {
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      }
+      
+      .ivory-bg-light {
+        background-color: #fcfaf7;
+      }
+      
+      /* Styles for the Quotation Preview */
+      #print-area {
+        background-color: var(--corporate-preview-bg) !important;
+        color: var(--preview-text-primary);
+      }
+      #print-area .preview-text-secondary {
+        color: var(--preview-text-secondary);
+      }
+      #print-area table thead {
+        border-bottom: 2px solid var(--corporate-accent);
+      }
+      #print-area table tbody tr {
+        border-bottom: 1px solid #C9A76D55; /* Gold with transparency */
+      }
+      #print-area table tbody tr:last-child {
+        border-bottom: none;
+      }
+      
+      @media print {
+        body {
+          background: #fff;
+        }
+        body::before {
+          display: none;
+        }
+        body * {
+          visibility: hidden;
+        }
+        #print-area, #print-area * {
+          visibility: visible;
+        }
+        #print-area {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          color: #000;
+        }
+        .print-hidden {
+          display: none;
+        }
+        .print-text-black {
+          color: #000 !important;
+        }
+        .print-bg-white {
+          background-color: #fff !important;
+        }
+        .print-border-gray {
+          border-color: #e5e7eb !important;
+        }
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.29.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
